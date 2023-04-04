@@ -3,7 +3,12 @@
 
     <declare-styleable name="CustomView">
         <attr name="customViewPositiveButtonText" format="string" />
-        
+        <attr name="customViewNegativeButtonText" format="string" />
+        <attr name="customViewPositiveButtonColour" format="color" />
+        <attr name="customViewNegativeButtonColour" format="color" />
+        <attr name="customViewSwitchOnState" format="boolean" />
+
+
     </declare-styleable>
 
 </resources>
