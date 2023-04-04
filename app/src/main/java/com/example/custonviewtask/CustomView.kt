@@ -9,8 +9,10 @@ class CustomView(
     attrs : AttributeSet?,
     defStyleAttr: Int,
     desStyleRes: Int
-) : ConstraintLayout(context, attrs, defStyleAttr) {
+) : ConstraintLayout(context, attrs, defStyleAttr, desStyleRes) {
 
-
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int): this(context, attrs, defStyleAttr, 0)
+    constructor(context: Context, attrs: AttributeSet?): this(context,attrs,0)
+    constructor(context: Context): this(context, null)
 
 }
