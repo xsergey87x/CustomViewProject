@@ -1,6 +1,8 @@
 package com.example.custonviewtask
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -26,5 +28,25 @@ class CustomView(
         binding = CustomViewBinding.bind(this)
     }
 
+ private fun initializeAttributes(attrs: AttributeSet?,defStyleAttr: Int,desStyleRes: Int)
+ {
+     if (attrs == null) return
+     val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomView, defStyleAttr,desStyleRes)
 
+     with(binding){
+         val positiveButtonText = typedArray.getString(R.styleable.CustomView_customViewPositiveButtonText)
+         positiveButton.text = positiveButtonText ?: "Turn on"
+
+         val negativeButtonText = typedArray.getString(R.styleable.CustomView_customViewNegativeButtonText)
+         negativeButton.text = negativeButtonText ?: "Turn off"
+
+         val positiveButtonColour = typedArray.getColor(R.styleable.CustomView_customViewPositiveButtonColour, Color.GREEN)
+         positiveButton.backgroundTintList = ColorStateList.valueOf(positiveButtonColour)
+
+         val negativeButtonColour = typedArray.getColor(R.styleable.CustomView_customViewNegativeButtonColour, Color.RED)
+         negativeButton.backgroundTintList= ColorStateList.valueOf(negativeButtonColour)
+     }
+
+     typedArray.recycle()
+ }
 }
