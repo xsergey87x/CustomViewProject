@@ -8,6 +8,13 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.custonviewtask.databinding.CustomViewBinding
 
+enum class ButtonAction
+{
+    TURN_ON, TURN_OFF
+}
+
+typealias OnButtonsActionListener = (ButtonAction) -> Unit
+
 class CustomView(
     context: Context,
     attrs : AttributeSet?,
@@ -16,6 +23,7 @@ class CustomView(
 ) : ConstraintLayout(context, attrs, defStyleAttr, desStyleRes) {
 
     private val binding: CustomViewBinding
+    private  var listener: OnButtonsActionListener? = null
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int): this(context, attrs, defStyleAttr, 0)
     constructor(context: Context, attrs: AttributeSet?): this(context,attrs,0)
@@ -27,6 +35,7 @@ class CustomView(
         inflater.inflate(R.layout.custom_view,this,true)
         binding = CustomViewBinding.bind(this)
         initializeAttributes(attrs,defStyleAttr, desStyleRes)
+        initListeners()
     }
 
  private fun initializeAttributes(attrs: AttributeSet?,defStyleAttr: Int,desStyleRes: Int)
@@ -61,4 +70,19 @@ class CustomView(
 
      typedArray.recycle()
  }
+
+    private fun initListeners()
+    {
+   binding.positiveButton.setOnClickListener {
+    this.listener?.invoke(ButtonAction.TURN_ON)
+}
+   binding.negativeButton.setOnClickListener {
+            this.listener?.invoke(ButtonAction.TURN_OFF)
+        }
+    }
+
+    fun setListener(listener: OnButtonsActionListener?)
+    {
+        this.listener = listener
+    }
 }

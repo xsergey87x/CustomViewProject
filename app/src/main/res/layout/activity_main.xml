@@ -6,26 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
+    <com.example.custonviewtask.CustomView
+        android:id="@+id/customButtonAction"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="163dp"
-        android:text="Button"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        app:customViewNegativeButtonText="Turn off"
+        app:customViewPositiveButtonText="Turn On"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.example.custonviewtask.CustomView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:customViewNegativeButtonText="Turn off"
-        app:customViewPositiveButtonText="Turn On"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
