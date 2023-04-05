@@ -26,6 +26,7 @@ class CustomView(
         val inflater = LayoutInflater.from(context)
         inflater.inflate(R.layout.custom_view,this,true)
         binding = CustomViewBinding.bind(this)
+        initializeAttributes(attrs,defStyleAttr, desStyleRes)
     }
 
  private fun initializeAttributes(attrs: AttributeSet?,defStyleAttr: Int,desStyleRes: Int)
@@ -45,6 +46,17 @@ class CustomView(
 
          val negativeButtonColour = typedArray.getColor(R.styleable.CustomView_customViewNegativeButtonColour, Color.RED)
          negativeButton.backgroundTintList= ColorStateList.valueOf(negativeButtonColour)
+
+         val isSwitchOn = typedArray.getBoolean(R.styleable.CustomView_customViewSwitchOnState,false)
+
+         if (isSwitchOn)
+         {
+              if (!switcher.isChecked) switcher.toggle()
+         }
+         else
+         {
+             if (switcher.isChecked) switcher.toggle()
+         }
      }
 
      typedArray.recycle()
