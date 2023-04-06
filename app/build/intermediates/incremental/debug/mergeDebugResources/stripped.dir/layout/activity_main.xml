@@ -10,13 +10,21 @@
         android:id="@+id/customButtonAction"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        app:customViewNegativeButtonText="Turn off"
-        app:customViewPositiveButtonText="Turn On"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/switcherState"
+        android:layout_width="236dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="157dp"
+        android:layout_marginEnd="197dp"
+        android:layout_marginBottom="28dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

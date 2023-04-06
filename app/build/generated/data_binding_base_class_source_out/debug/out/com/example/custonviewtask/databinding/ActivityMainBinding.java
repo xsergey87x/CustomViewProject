@@ -4,6 +4,7 @@ package com.example.custonviewtask.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,10 +23,14 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final CustomView customButtonAction;
 
+  @NonNull
+  public final TextView switcherState;
+
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull CustomView customButtonAction) {
+      @NonNull CustomView customButtonAction, @NonNull TextView switcherState) {
     this.rootView = rootView;
     this.customButtonAction = customButtonAction;
+    this.switcherState = switcherState;
   }
 
   @Override
@@ -61,7 +66,14 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, customButtonAction);
+      id = R.id.switcherState;
+      TextView switcherState = ViewBindings.findChildViewById(rootView, id);
+      if (switcherState == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((ConstraintLayout) rootView, customButtonAction,
+          switcherState);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
